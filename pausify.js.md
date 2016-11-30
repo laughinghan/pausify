@@ -36,7 +36,7 @@ something.on('change', function () {
 })
 ```
 
-How? Easy:
+The source code is trivial:
 
     module.exports = function (serve) {
       var q
