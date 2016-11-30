@@ -11,8 +11,7 @@ Example, pausing an HTTP server:
 
       require('fs').watch('./some_source.file', function () {
         helloWorld.pause()
-        regenerateStuff()
-        .on('end', helloWorld.resume)
+        regenerateStuff().on('end', helloWorld.resume)
       })
     }
 
@@ -27,8 +26,7 @@ Example, pausing TCP port forwarding from 8000 &rarr; 1337:
 
       require('fs').watch('./some_source.file', function () {
         fwd.pause()
-        regenerateStuff()
-        .on('end', fwd.resume)
+        regenerateStuff().on('end', fwd.resume)
       })
     }
 
