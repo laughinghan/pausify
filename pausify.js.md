@@ -8,8 +8,8 @@ Example, pausing an HTTP server:
         res.end('Hello world\n')
       })
       require('http').createServer(helloWorld).listen(1337)
-
-      require('fs').watch('./some_source.file', function () {
+      // ...
+      something.on('change', function () {
         helloWorld.pause()
         regenerateStuff().on('end', helloWorld.resume)
       })
@@ -23,8 +23,8 @@ Example, pausing TCP port forwarding from 8000 &rarr; 1337:
         incoming.pipe(net.createConnection({ port: 1337 }).pipe(incoming))
       })
       net.createServer(fwd).listen(8000)
-
-      require('fs').watch('./some_source.file', function () {
+      // ...
+      something.on('change', function () {
         fwd.pause()
         regenerateStuff().on('end', fwd.resume)
       })
