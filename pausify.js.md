@@ -2,33 +2,35 @@
 
 Example, pausing an HTTP server:
 
-    /* HTTP Example
-    var pausify = require('pausify'), http = require('http')
-    var helloWorld = pausify(function (req, res) {
-      res.end('Hello world\n')
-    })
-    http.createServer(helloWorld).listen(1337)
-    // ...
-    something.on('change', function () {
-      helloWorld.pause()
-      regenerateStuff().on('end', helloWorld.resume)
-    })
-    */
+    function HTTP_Example () {
+      var pausify = require('pausify'), http = require('http')
+      var helloWorld = pausify(function (req, res) {
+        res.end('Hello world\n')
+      })
+      http.createServer(helloWorld).listen(1337)
+      // ...
+      something.on('change', function () {
+        helloWorld.pause()
+        regenerateStuff()
+        .on('end', helloWorld.resume)
+      })
+    }
 
 Example, pausing TCP port forwarding from 8000 &rarr; 1337:
 
-    /* TCP Example
-    var pausify = require('pausify'), net = require('net')
-    var fwd = pausify(function (incoming) {
-      incoming.pipe(net.createConnection({ port: 1337 }).pipe(incoming))
-    })
-    net.createServer(fwd).listen(8000)
-    // ...
-    something.on('change', function () {
-      fwd.pause()
-      regenerateStuff().on('end', fwd.resume)
-    })
-    */
+    function TCP_Example () {
+      var pausify = require('pausify'), net = require('net')
+      var fwd = pausify(function (incoming) {
+        incoming.pipe(net.createConnection({ port: 1337 }).pipe(incoming))
+      })
+      net.createServer(fwd).listen(8000)
+      // ...
+      something.on('change', function () {
+        fwd.pause()
+        regenerateStuff()
+        .on('end', fwd.resume)
+      })
+    }
 
 How? Easy:
 
