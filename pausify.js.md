@@ -3,11 +3,11 @@
 Example, pausing an HTTP server:
 
     function HTTP_Example () {
-      var pausify = require('pausify')
+      var pausify = require('pausify'), http = require('http')
       var helloWorld = pausify(function (req, res) {
         res.end('Hello world\n')
       })
-      require('http').createServer(helloWorld).listen(1337)
+      http.createServer(helloWorld).listen(1337)
       // ...
       something.on('change', function () {
         helloWorld.pause()
