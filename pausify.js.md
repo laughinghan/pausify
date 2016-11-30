@@ -1,8 +1,8 @@
 # Pause and resume serving requests
 
-Pause an HTTP, TCP, or other kind of server, queueing up in-flight requests or connections, then resume the server later.
+Pause an HTTP, TCP, or other kind of server, queueing up incoming requests or connections, then resume the server later.
 
-Useful if you have a filewatcher server that automatically rebuilds a project when a file changes, but refreshing the browser is pulling in partially-built files.
+Useful if you have a filewatcher that automatically rebuilds a project when a file changes, but you get partially-built files when you refresh the browser. You can use this to queue up the requests from the browser until your project finishes rebuilding.
 
 Example, pausing an HTTP server:
 
