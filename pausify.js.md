@@ -6,33 +6,33 @@ Useful if you have a filewatcher server that automatically rebuilds a project wh
 
 Example, pausing an HTTP server:
 
-```example
+```
 var pausify = require('pausify'), http = require('http')
 var helloWorld = pausify(function (req, res) {
-res.end('Hello world\n')
+  res.end('Hello world\n')
 })
 http.createServer(helloWorld).listen(1337)
 // ...
 something.on('change', function () {
-helloWorld.pause()
-regenerateStuff()
-.on('end', helloWorld.resume)
+  helloWorld.pause()
+  regenerateStuff()
+  .on('end', helloWorld.resume)
 })
 ```
 
 Example, pausing TCP port forwarding from 8000 &rarr; 1337:
 
-```example
+```
 var pausify = require('pausify'), net = require('net')
 var fwd = pausify(function (incoming) {
-incoming.pipe(net.createConnection({ port: 1337 }).pipe(incoming))
+  incoming.pipe(net.createConnection({ port: 1337 }).pipe(incoming))
 })
 net.createServer(fwd).listen(8000)
 // ...
 something.on('change', function () {
-fwd.pause()
-regenerateStuff()
-.on('end', fwd.resume)
+  fwd.pause()
+  regenerateStuff()
+  .on('end', fwd.resume)
 })
 ```
 
