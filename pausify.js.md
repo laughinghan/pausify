@@ -1,5 +1,9 @@
 # Pause and resume serving requests
 
+Pause an HTTP, TCP, or other kind of server, queueing up in-flight requests or connections, then resume the server later.
+
+Useful if you have a filewatcher server that automatically rebuilds a project when a file changes, but refreshing the browser is pulling in partially-built files.
+
 Example, pausing an HTTP server:
 
     function HTTP_Example () {
